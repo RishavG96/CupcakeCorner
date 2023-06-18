@@ -51,20 +51,72 @@ struct Result: Codable {
 struct ContentView: View {
     @State private var results = [Result]()
     
+    @State private var username = ""
+    @State private var email = ""
+    
     var body: some View {
-        List(results, id: \.trackId) { item in
-            VStack(alignment: .leading) {
-                Text(item.trackName)
-                    .font(.headline)
+//        List(results, id: \.trackId) { item in
+//            VStack(alignment: .leading) {
+//                Text(item.trackName)
+//                    .font(.headline)
+//
+//                Text(item.collectionName)
+//                    .font(.headline)
+//            }
+//        }
+//        .task {
+//            await loadData()
+//            // ack with await that this func might go to sleep
+//        }
+        VStack {
+            AsyncImage(url: URL(string: "https://hws.dev/img/logo.png"), scale: 3) // mention scale as 3x as it downloads 1200 high image and we need to tell it to scale down to 400 points.
+            //Resizable and Frame modifiers does not work with AsyncImages to images that get downloaded
+            // if we apply modifier to AsyncImage(url:) like frame(width: 300, height: 300) then it is applies to the AsyncImage not to the image inside the AsyncImage
+            // thus we use a complex form of AsyncImage that will pass us image when its ready
+         
+            AsyncImage(url: URL(string: "https://hws.dev/img/logo.png"), scale: 3) { image in
+                image
+                    .resizable()
+                    .scaledToFit()
+            } placeholder: {
+                ProgressView()
+            }
+            .frame(width: 20, height: 20)
+            
+            
+            // Third way of Async Image - 1. Wether the image was loaded 2. Or Hit an error 3. Or Hasnt finished yet
+            
+            AsyncImage(url: URL(string: "https://hws.dev/img/bad.png")) { phase in
+                if let image = phase.image {
+                    image
+                        .resizable()
+                        .scaledToFit()
+                } else if phase.error != nil {
+                    Text("There was an error loading the image")
+                } else {
+                    ProgressView()
+                }
+            }
+            .frame(width: 20, height: 20)
+            
+            Form {
+                Section {
+                    TextField("Username",text: $username)
+                    TextField("Email",text: $email)
+                }
                 
-                Text(item.collectionName)
-                    .font(.headline)
+                Section {
+                    Button("Create Account") {
+                        print("Creating Account")
+                    }
+                }
+                .disabled(disableForm)
             }
         }
-        .task {
-            await loadData()
-            // ack with await that this func might go to sleep
-        }
+    }
+    
+    var disableForm: Bool {
+        username.count < 5 || email.count < 5
     }
     
     func loadData() async { // writing async tell it that this loadData method here might want to go to sleep in order for it to complete it work. This function cannot be be called on onAppear method as that requires a sync function. SwiftUI provides a task modifier for this. This can call functions that can go to sleep
@@ -85,7 +137,7 @@ struct ContentView: View {
     }
 }
 
-// Downloads data, caches it locally, and updates the UI view  to display the image when its ready
+// AsyncImage: Downloads data, caches it locally, and updates the UI view  to display the image when its ready
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
