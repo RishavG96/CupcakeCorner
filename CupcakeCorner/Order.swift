@@ -40,6 +40,13 @@ class Order: ObservableObject, Codable {
         return true
     }
     
+    var hasValidEntry: Bool {
+        if name.trimmingCharacters(in: .whitespaces).isEmpty || streetAddress.trimmingCharacters(in: .whitespaces).isEmpty || city.trimmingCharacters(in: .whitespaces).isEmpty || zip.trimmingCharacters(in: .whitespaces).isEmpty {
+            return false
+        }
+        return true
+    }
+    
     var cost: Double {
         // 2 dollars per cake
         var cost = Double(quantity) * 2

@@ -15,6 +15,7 @@
 		BDFE7E482A3F32DC003547B7 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFE7E472A3F32DC003547B7 /* Order.swift */; };
 		BDFE7E4A2A3F382A003547B7 /* AddressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFE7E492A3F382A003547B7 /* AddressView.swift */; };
 		BDFE7E4C2A3F399C003547B7 /* CheckoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFE7E4B2A3F399C003547B7 /* CheckoutView.swift */; };
+		BDFE7E4E2A3FF296003547B7 /* OrderItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFE7E4D2A3FF296003547B7 /* OrderItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		BDFE7E472A3F32DC003547B7 /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 		BDFE7E492A3F382A003547B7 /* AddressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressView.swift; sourceTree = "<group>"; };
 		BDFE7E4B2A3F399C003547B7 /* CheckoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutView.swift; sourceTree = "<group>"; };
+		BDFE7E4D2A3FF296003547B7 /* OrderItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +69,7 @@
 				BDFE7E3B2A3EDF9C003547B7 /* Assets.xcassets */,
 				BDFE7E3D2A3EDF9C003547B7 /* Preview Content */,
 				BDFE7E452A3F31E3003547B7 /* Practise1.swift */,
+				BDFE7E4D2A3FF296003547B7 /* OrderItem.swift */,
 			);
 			path = CupcakeCorner;
 			sourceTree = "<group>";
@@ -151,6 +154,7 @@
 			files = (
 				BDFE7E3A2A3EDF9B003547B7 /* ContentView.swift in Sources */,
 				BDFE7E462A3F31E3003547B7 /* Practise1.swift in Sources */,
+				BDFE7E4E2A3FF296003547B7 /* OrderItem.swift in Sources */,
 				BDFE7E4C2A3F399C003547B7 /* CheckoutView.swift in Sources */,
 				BDFE7E482A3F32DC003547B7 /* Order.swift in Sources */,
 				BDFE7E382A3EDF9B003547B7 /* CupcakeCornerApp.swift in Sources */,
